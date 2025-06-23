@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 2</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- HEADER SECTION -->
+    <header>
+        <h1>COMP 3512 Music App</h1>
+        <p id = "creators">By: Zee El-Masri & Andrew Yu</p>
+        <div id="header-buttons">
+            <div id="close-view-button-container"></div>
+            <button id="playlist-button">Playlist</button>
+           
+            <button id="credits-button">Credits</button>
+            
+        </div>
+        
+    </header>
+
+     <!-- SEARCH/BROWSE SECTION -->
+    <div id="search-songs-view">
+        <h2>Search/Browse Songs</h2>
+
+        <section id="song-search-section">
+
+            <!-- Select search options -->
+            <div id="radioButtons">
+                <input type="radio" id="title-option" name="search-options" value="title" checked>
+                <label for="title-option">Title</label>
+                
+                <input type="radio" id="artist-option" name="search-options" value="artist">
+                <label for="artist-option">Artist</label>
+                
+                <input type="radio" id="genre-option" name="search-options" value="genre">
+                <label for="genre-option">Genre</label>
+            </div>
+            
+            <!-- Search -->
+            <label for="song-search" >Search Songs:</label>
+            <input type="text" id="song-search" placeholder="Enter song title">
+            
+            <!-- Artist -->
+            <label for="artist-select">Artist:</label>
+            <select id="artist-select">
+                <option value="">Select Artist</option>
+                <!-- Artist options will be here -->
+            </select>
+            
+            <!-- Genre -->
+            <label for="genre-select">Genre:</label>
+            <select id="genre-select">
+                <option value="">Select Genre</option>
+                <!-- Genre options will be here -->
+            </select>
+            
+            <!-- Search and clear buttons -->
+            <button id="search-button">Search Title</button>
+            <br>
+            <button id="clear-button">Clear</button>
+        </section>
+
+        <!--Search results-->
+        <div id="search-results">
+            <h3>Browse/Search Results</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th id = "title-th" class="sortable" >Title</th>
+                        <th id = "artist-th" class="sortable" >Artist</th>
+                        <th id = "year-th" class="sortable">Year</th>
+                        <th id = "genre-th" class="sortable">Genre</th>
+                        <th id = "popularity-th" class="sortable">Popularity</th>
+                        <th>Add To Playlist</th>
+                    </tr>
+                </thead>
+            <tbody>
+                <!-- Song info rows will be generated  here -->
+            </tbody>
+        </table>
+        </div>
+    </div>
+
+    <!-- Single Song View Section -->
+    <div id="single-song-view">
+        <h2>Song Details</h2>
+        <div id="song-details" class="songDetails">
+            <div id="left-section" class="song-info">
+                <h3>Song Information</h3>
+                <p id="song-info-line"><!--SongInfo on this line--></p>
+                <ul id="analysis-data">
+                    <li id="bpm">BPM: </li>
+                    <li id="energy">Energy: </li>
+                    <li id="danceability">Danceability: </li>
+                    <li id="liveness">Liveness: </li>
+                    <li id="valence">Valence: </li>
+                    <li id="acousticness">Acousticness: </li>
+                    <li id="speechiness">Speechiness: </li>
+                    <li id="popularity">Popularity: </li>
+                </ul>
+            </div>
+
+         <!-- Radar Chart -->
+        <div id="right-section" class="radar-chart">
+           
+            <h3>Radar Chart</h3>
+            <canvas id="radarChart"></canvas>
+
+        </div>
+    </div>
+</div>
+
+    <!-- PLAYLIST VIEW SECTION -->
+    <div id="playlist-view">
+        <h2>Playlist Details</h2>
+        <p id="playlist-summary"><span id="playlist-count">0</span> songs with an average popularity score of <span id="playlist-average">0</span></p>
+        <button id="remove-all-button">Remove All</button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Artist</th>
+                        <th>Year</th>
+                        <th>Genre</th>
+                        <th>Popularity</th>
+                        <th>Remove</th>
+                    </tr>
+                </thead>
+            <tbody>
+                <!-- Playlist song info rows will be generated  here -->
+            </tbody>
+        </table>
+    </div>
+    </div>
+
+    <!-- Footer content here -->
+    <footer>
+        <p>Course: COMP 3512</p>
+        <p>&copy; Zee El-Masri,  Andrew Yu</p>
+        <p>
+            <a class="footer-link" href="https://github.com/ayu381/A2_Comp3512">GitHub Repo</a>
+            <a class="footer-link" href="https://github.com/joemasri">Zee El-Masri</a>
+            <a class="footer-link" href="https://github.com/ayu381">Andrew Yu</a>
+        </p>
+    </footer>
+
+    <!-- Script Sources-->
+    <script src="starting-files/artists.json"></script>
+    <script src="starting-files/genres.json"></script>
+    <script src="starting-files/sample-songs.json"></script>
+    <script src="js-files/SearchBrowse.js"></script>
+    <script src="js-files/SongDetails.js"></script> 
+    <script src="js-files/Playlist.js"></script>
+
+     <!-- Radar Chart-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Dialogflow Messenger Integration -->
+  <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+  <df-messenger
+  intent="WELCOME"
+  chat-title="Sammy"
+  agent-id="43689bb4-06b4-4215-8cbd-756e611b63f1"
+  language-code="en"
+  chat-icon="https://cdn-ch-prod-bqhwa0ewbpg6eyc2.z01.azurefd.net/prod-img-cache/CDN-ik-images/charityprofile/1/1430/SAMRULogo_Flat_450x450_trans.png"
+  ></df-messenger>
+</body>
+</html>
+
+
